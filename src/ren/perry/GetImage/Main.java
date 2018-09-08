@@ -327,9 +327,19 @@ public class Main {
         String bannerImageData = bannerImageSplit.substring(bannerImageSplit.indexOf("(") + 1, bannerImageSplit.lastIndexOf(");") - 9);
         String bannerImageDataSub = bannerImageData.substring(bannerImageData.indexOf("{"), bannerImageData.lastIndexOf("}") + 1);
         JSONObject bannerImageDataJO = JSONObject.parseObject(bannerImageDataSub);
-        JSONArray bannerImageJA = bannerImageDataJO.getJSONObject("propertyPics").getJSONArray("default");
-        for (Object o : bannerImageJA) {
-            bannerImgUrls.add(imgUrlAddHttp(o.toString()));
+
+        if (bannerImageDataJO.getJSONObject("propertyPics") != null && bannerImageDataJO.getJSONObject("propertyPics").getJSONArray("default") != null) {
+            JSONArray bannerImageJA = bannerImageDataJO.getJSONObject("propertyPics").getJSONArray("default");
+            for (Object o : bannerImageJA) {
+                bannerImgUrls.add(imgUrlAddHttp(o.toString()));
+            }
+        } else {
+            Elements lis = doc.select("ul[id=J_UlThumb]").select("li");
+            for (Element li : lis) {
+                String urlSource = li.select("a").select("img").attr("src");
+                String urlSub = urlSource.substring(0, urlSource.lastIndexOf("_"));
+                bannerImgUrls.add(imgUrlAddHttp(urlSub));
+            }
         }
         System.out.println("产品图：" + bannerImgUrls.size() + "张");
 
@@ -339,7 +349,7 @@ public class Main {
         JSONObject apiJO = bannerImageDataJO.getJSONObject("api");
         String detailUrl_1 = imgUrlAddHttp(apiJO.getString("descUrl"));
         String detailUrl_2 = imgUrlAddHttp(apiJO.getString("httpsDescUrl"));
-        String detailUrl_3 = imgUrlAddHttp(apiJO.getString("fetchDcUrl"));
+//        String detailUrl_3 = imgUrlAddHttp(apiJO.getString("fetchDcUrl"));
         Document detailContent_1 = Jsoup.parse(sendGet(detailUrl_1, ""));
         Elements detailImg_1 = detailContent_1.select("img");
         for (Element img : detailImg_1) {
@@ -372,23 +382,23 @@ public class Main {
                 }
             }
         }
-        if (detailImgUrls.size() < 1) {
-            Document detailContent_3 = Jsoup.parse(sendGet(detailUrl_3, ""));
-            Elements detailImg_3 = detailContent_3.select("img");
-            for (Element img : detailImg_3) {
-                String imgUrl = imgUrlAddHttp(img.attr("src"));
-                Pattern pattern = Pattern.compile("http://(?!(\\.jpg|\\.png)).+?(\\.jpg|\\.png)");
-                Pattern pattern1 = Pattern.compile("https://(?!(\\.jpg|\\.png)).+?(\\.jpg|\\.png)");
-                Matcher matcher = pattern.matcher(imgUrl);
-                Matcher matcher1 = pattern1.matcher(imgUrl);
-                while (matcher.find()) {
-                    detailImgUrls.add(matcher.group(0));
-                }
-                while (matcher1.find()) {
-                    detailImgUrls.add(matcher1.group(0));
-                }
-            }
-        }
+//        if (detailImgUrls.size() < 1) {
+//            Document detailContent_3 = Jsoup.parse(sendGet(detailUrl_3, ""));
+//            Elements detailImg_3 = detailContent_3.select("img");
+//            for (Element img : detailImg_3) {
+//                String imgUrl = imgUrlAddHttp(img.attr("src"));
+//                Pattern pattern = Pattern.compile("http://(?!(\\.jpg|\\.png)).+?(\\.jpg|\\.png)");
+//                Pattern pattern1 = Pattern.compile("https://(?!(\\.jpg|\\.png)).+?(\\.jpg|\\.png)");
+//                Matcher matcher = pattern.matcher(imgUrl);
+//                Matcher matcher1 = pattern1.matcher(imgUrl);
+//                while (matcher.find()) {
+//                    detailImgUrls.add(matcher.group(0));
+//                }
+//                while (matcher1.find()) {
+//                    detailImgUrls.add(matcher1.group(0));
+//                }
+//            }
+//        }
         System.out.println("详情图：" + detailImgUrls.size() + "张");
 
         //创建文件夹
@@ -539,7 +549,7 @@ public class Main {
         while (url.indexOf("/") == 0 || url.indexOf(" ") == 0) {
             url = url.substring(1);
         }
-        if (!url.substring(0, 5).contains("http")) url = "http://" + url;
+        if (!url.contains("http")) url = "http://" + url;
         return url;
     }
 
