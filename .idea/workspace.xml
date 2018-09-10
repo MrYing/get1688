@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56a1aaf4-354d-4b12-a226-67c328f79644" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/get1688/ren/perry/GetImage/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/get1688/ren/perry/GetImage/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/get1688_jar/get1688.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ren/perry/GetImage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ren/perry/GetImage/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -22,23 +22,23 @@
     <session id="-790235308">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.1" value="2" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.9" value="1" />
           <entry key="project.open.time.97" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="1" />
-          <entry key="java" value="6941" />
+          <entry key="java" value="7183" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="6941" />
+          <entry key="JAVA" value="7183" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.run.usages" />
@@ -67,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ren/perry/GetImage/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="571" column="7" lean-forward="true" selection-start-line="571" selection-start-column="7" selection-end-line="571" selection-end-column="7" />
+            <state relative-caret-position="444">
+              <caret line="495" column="13" lean-forward="true" selection-start-line="495" selection-start-column="13" selection-end-line="495" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#init#0;class#Main#0" />
@@ -157,9 +157,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -221,17 +221,19 @@
       <workItem from="1535981457498" duration="24250000" />
       <workItem from="1536204915247" duration="3912000" />
       <workItem from="1536211300153" duration="25221000" />
-      <workItem from="1536393763165" duration="2222000" />
+      <workItem from="1536393763165" duration="2677000" />
+      <workItem from="1536570448880" duration="1942000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55605000" />
+    <option name="totallyTimeSpent" value="58002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1929182" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1953602" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -248,7 +250,7 @@
       <window_info anchor="bottom" id="Docker" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32959184" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32959184" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32959184" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -299,8 +301,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ren/perry/GetImage/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="571" column="7" lean-forward="true" selection-start-line="571" selection-start-column="7" selection-end-line="571" selection-end-column="7" />
+        <state relative-caret-position="444">
+          <caret line="495" column="13" lean-forward="true" selection-start-line="495" selection-start-column="13" selection-end-line="495" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#init#0;class#Main#0" />

@@ -451,22 +451,38 @@ public class Main {
                 bannerScript = bs;
             }
         }
-
-        String bannerImageSplit = bannerScript.data().split("imageList")[1];
-        String bannerImageDataSub = bannerImageSplit.substring(bannerImageSplit.indexOf("["), bannerImageSplit.indexOf("]") + 1);
-        JSONArray bannerImageDataJA = JSONArray.parseArray(bannerImageDataSub);
-        for (Object o : bannerImageDataJA) {
-            bannerImgUrls.add(jdImageDomain + o.toString());
+        if (bannerScript != null) {
+            String bannerImageSplit = bannerScript.data().split("imageList")[1];
+            String bannerImageDataSub = bannerImageSplit.substring(bannerImageSplit.indexOf("["), bannerImageSplit.indexOf("]") + 1);
+            JSONArray bannerImageDataJA = JSONArray.parseArray(bannerImageDataSub);
+            for (Object o : bannerImageDataJA) {
+                bannerImgUrls.add(jdImageDomain + o.toString());
+            }
+        } else {
+            Elements lis = doc.select("div[id=spec-list]").select("ul[class=lh]").select("li");
+            for (Element li : lis) {
+                String url = li.select("img").attr("data-url");
+                bannerImgUrls.add(jdImageDomain + url);
+            }
         }
         System.out.println("产品图：" + bannerImgUrls.size() + "张");
 
         /*
          * 获取详情图
          */
-        String detailUrlSplit = bannerScript.data().split("desc:")[1];
+        Element detailScript = null;
+        for (Element bs : bannerScripts) {
+            if (bs.toString().contains("desc:")) {
+                detailScript = bs;
+            }
+        }
+
+        String detailUrlSplit = detailScript.data().split("desc:")[1];
         String detailUrlSub = detailUrlSplit.substring(detailUrlSplit.indexOf("//"), detailUrlSplit.indexOf(",") - 1);
         String detailUrl = imgUrlAddHttp(detailUrlSub);
-        JSONObject detailContentJo = JSONObject.parseObject(sendGet(detailUrl, ""));
+        String detailResult = sendGet(detailUrl, "");
+        String detailJsonStr = detailResult.substring(detailResult.indexOf("{"), detailResult.lastIndexOf("}") + 1);
+        JSONObject detailContentJo = JSONObject.parseObject(detailJsonStr);
         Document detailContent = Jsoup.parse(detailContentJo.getString("content"));
         Elements detailImg = detailContent.select("img");
         for (Element img : detailImg) {
